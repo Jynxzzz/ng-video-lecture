@@ -203,8 +203,10 @@ print(sum(p.numel() for p in m.parameters())/1e6, 'M parameters')
 # create a PyTorch optimizer
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
-for iter in range(max_iters):
+print(f"cuda is avalable? {torch.cuda.is_available == True}")
 
+for iter in range(max_iters):
+    print(f"this is {iter} iters, we are doing things!")
     # every once in a while evaluate the loss on train and val sets
     if iter % eval_interval == 0 or iter == max_iters - 1:
         losses = estimate_loss()
